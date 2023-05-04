@@ -28,6 +28,11 @@ public class PowerImpl implements Power {
   }
 
   @Override
+  public Integer divide(int divider) {
+    return currentPower/divider;
+  }
+
+  @Override
   public String toString() {
     return "Current power: " + currentPower + "\nMax power: " + maxPower;
   }

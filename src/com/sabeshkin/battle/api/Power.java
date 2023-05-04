@@ -19,4 +19,9 @@ public interface Power {
    * уВеличивает силу на переданное кол-во единиц.
    */
   void add(Power addingPower);
+
+  /**
+   * Разделить значение силы на заданный коэфицент.
+   */
+  Integer divide(int divider);
 }

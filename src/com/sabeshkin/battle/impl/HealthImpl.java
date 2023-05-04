@@ -12,13 +12,25 @@ public class HealthImpl implements Health {
     this.maxHealth = maxHealth;
   }
 
+  /**
+   * Используется при вычитании из текущего значения здоровья другого игрока.
+   */
+  public HealthImpl(Integer currentHealth) {
+    this.currentHealth = currentHealth;
+    this.maxHealth = null;
+  }
+
+
   public Integer getCurrentHealth() {
     return currentHealth;
   }
 
   @Override
-  public void damage(Health damage) {
-    this.currentHealth -= damage.getCurrentHealth();
+  public Health damage(Health damage) {
+    Integer newCurrentHealth = this.currentHealth - damage.getCurrentHealth();
+    return new HealthImpl(
+        newCurrentHealth,
+        this.maxHealth);
   }
 
   @Override
