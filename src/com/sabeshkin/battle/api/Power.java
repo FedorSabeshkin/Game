@@ -5,18 +5,18 @@ package com.sabeshkin.battle.api;
  */
 public interface Power {
 
-    /**
-     * Хранимое значение.
-     */
-    Integer getCurrentPower();
+  /**
+   * Хранимое значение.
+   */
+  Integer getCurrentPower();
 
-    /**
-     * уМеньшает силу на переданное кол-во единиц.
-     */
-    void take(Power tookPower);
+  /**
+   * уМеньшает силу на переданное кол-во единиц.
+   */
+  void take(Power tookPower);
 
-    /**
-     * уВеличивает силу на переданное кол-во единиц.
-     */
-    void add(Power addingPower);
+  /**
+   * уВеличивает силу на переданное кол-во единиц.
+   */
+  void add(Power addingPower);
 }

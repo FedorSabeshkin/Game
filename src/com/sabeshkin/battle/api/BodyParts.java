@@ -5,5 +5,5 @@ package com.sabeshkin.battle.api;
  */
 public interface BodyParts {
 
-    String getSelected();
+  String getSelected();
 }
