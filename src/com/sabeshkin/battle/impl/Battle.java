@@ -44,8 +44,8 @@ public class Battle {
   /**
    * Проверка на то, что у боцов остались очки жизней для продолжения.
    */
-  public boolean isBattleContinue(Warrior w_1,
-                                  Warrior w_2) {
+  public boolean isContinue(Warrior w_1,
+                            Warrior w_2) {
     return w_1.getHealth()
               .getCurrentHealth() > 0
         && w_2.getHealth()

@@ -29,13 +29,13 @@ public class Main {
     log("Warrior 1 id: " + w_1.getId());
     log("Warrior 2 id: " + w_2.getId());
 
-    boolean isBattleContinue = battle.isBattleContinue(w_1, w_2);
+    boolean isBattleContinue = battle.isContinue(w_1, w_2);
     while (isBattleContinue) {
       Hod hod_1 = Hod.makeHod(scanner);
       Hod hod_2 = Hod.makeHod(scanner);
       w_2 = battle.calculateDamage(hod_1, hod_2, w_1, w_2);
       w_1 = battle.calculateDamage(hod_2, hod_1, w_2, w_1);
-      isBattleContinue = battle.isBattleContinue(w_1, w_2);
+      isBattleContinue = battle.isContinue(w_1, w_2);
     }
     Result resulter = new Result();
     resulter.calculate(w_1, w_2);
