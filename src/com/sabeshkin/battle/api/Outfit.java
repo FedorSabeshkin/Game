@@ -19,4 +19,5 @@ public interface Outfit {
    * Единицы силы, которые будут добавлены бойцу.
    */
   Power getPower();
+
 }

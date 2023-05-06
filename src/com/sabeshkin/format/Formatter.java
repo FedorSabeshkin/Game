@@ -11,4 +11,5 @@ public class Formatter {
   public static void log(Object logMessage) {
     System.out.println(logMessage);
   }
+
 }

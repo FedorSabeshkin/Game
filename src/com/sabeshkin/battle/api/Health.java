@@ -19,4 +19,5 @@ public interface Health {
    * уВеличивает здоровье на переданное кол-во единиц.
    */
   void treat(Health addingHealth);
+
 }

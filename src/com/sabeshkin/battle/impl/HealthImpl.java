@@ -2,12 +2,21 @@ package com.sabeshkin.battle.impl;
 
 import com.sabeshkin.battle.api.Health;
 
-public class HealthImpl implements Health {
+/**
+ * Здоровье - Обертки над стандартным числовым типом.
+ */
+public class HealthImpl
+    implements Health {
 
   private Integer currentHealth;
+
   private Integer maxHealth;
 
-  public HealthImpl(Integer currentHealth, Integer maxHealth) {
+  /**
+   * Здоровье - Обертки над стандартным числовым типом.
+   */
+  public HealthImpl(Integer currentHealth,
+                    Integer maxHealth) {
     this.currentHealth = currentHealth;
     this.maxHealth = maxHealth;
   }
@@ -42,4 +51,5 @@ public class HealthImpl implements Health {
   public String toString() {
     return "Current health: " + currentHealth + "\nMax health: " + maxHealth;
   }
+
 }

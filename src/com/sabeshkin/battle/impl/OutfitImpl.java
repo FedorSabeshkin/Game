@@ -9,17 +9,21 @@ import java.util.Objects;
 /**
  * Обмундирование бойца.
  */
-public class OutfitImpl implements Outfit {
+public class OutfitImpl
+    implements Outfit {
 
   private final WarriorId ownerId;
+
   private final Health healthForAdd;
+
   private final Power powerForAdd;
 
   /**
    * Обмундирование бойца.
    */
-  public OutfitImpl(WarriorId ownerId, Health healthForAdd,
-      Power powerForAdd) {
+  public OutfitImpl(WarriorId ownerId,
+                    Health healthForAdd,
+                    Power powerForAdd) {
     this.ownerId = ownerId;
     this.healthForAdd = healthForAdd;
     this.powerForAdd = powerForAdd;
@@ -50,7 +54,8 @@ public class OutfitImpl implements Outfit {
     }
     OutfitImpl outfit = (OutfitImpl) o;
     return Objects.equals(ownerId, outfit.ownerId) && Objects.equals(healthForAdd,
-        outfit.healthForAdd) && Objects.equals(powerForAdd, outfit.powerForAdd);
+                                                                     outfit.healthForAdd)
+        && Objects.equals(powerForAdd, outfit.powerForAdd);
   }
 
   @Override
@@ -66,4 +71,5 @@ public class OutfitImpl implements Outfit {
         ", powerForAdd=" + powerForAdd +
         '}';
   }
+
 }

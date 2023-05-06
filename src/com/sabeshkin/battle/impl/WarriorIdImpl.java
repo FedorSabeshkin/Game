@@ -8,7 +8,8 @@ import java.util.UUID;
 /**
  * Идентификатор бойца.
  */
-public class WarriorIdImpl implements WarriorId {
+public class WarriorIdImpl
+    implements WarriorId {
 
   private final UUID id;
 
@@ -21,12 +22,12 @@ public class WarriorIdImpl implements WarriorId {
 
   @Override
   public boolean equals(Object o) {
-      if (this == o) {
-          return true;
-      }
-      if (o == null || getClass() != o.getClass()) {
-          return false;
-      }
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     WarriorIdImpl warriorId = (WarriorIdImpl) o;
     return Objects.equals(id, warriorId.id);
   }
@@ -40,4 +41,5 @@ public class WarriorIdImpl implements WarriorId {
   public String toString() {
     return id.toString();
   }
+
 }

@@ -24,4 +24,5 @@ public interface Power {
    * Разделить значение силы на заданный коэфицент.
    */
   Integer divide(int divider);
+
 }
