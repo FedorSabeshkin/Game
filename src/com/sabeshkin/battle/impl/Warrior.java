@@ -60,7 +60,7 @@ public class Warrior {
    * Создание бойца с дефолтными характеристиками.
    */
   public static Warrior createDefaultWarrior() {
-    return new Warrior(new HealthImpl(100, 100), new PowerImpl(100, 100)
+    return new Warrior(new HealthImpl(100, 100), new PowerImpl(90, 90)
     );
   }
 
@@ -102,7 +102,7 @@ public class Warrior {
     Health healthAfterDamage =
         health.damage(
             new HealthImpl(attackPower));
-    log(String.format("После атаки на {} его очки здоровья равны {}", id, healthAfterDamage));
+    log(String.format("После атаки на %s: \n Его очки здоровья равны: %s", id, healthAfterDamage));
     return new Warrior(id,
                        healthAfterDamage,
                        power,
