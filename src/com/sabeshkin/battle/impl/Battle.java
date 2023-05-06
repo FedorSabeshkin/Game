@@ -1,21 +1,45 @@
 package com.sabeshkin.battle.impl;
 
+import static com.sabeshkin.battle.impl.Warrior.createDefaultWarrior;
+import static com.sabeshkin.format.Formatter.log;
+
+import com.sabeshkin.format.Result;
+import java.util.Scanner;
+
+/**
+ * Реализации битвы бойцов.
+ */
 public class Battle {
 
-  public static final int PROTECT_COEFICENT = 2;
+  public static final int PROTECT_COEFFICIENT = 2;
 
-  private Hod hod;
+  /**
+   * Реализация логики битвы.
+   */
+  public void startBattle() {
+    // create a scanner object to read input from System.in
+    Scanner scanner = new Scanner(System.in);
+    // create two warriors with initial health and power values
+    Warrior w_1 = createDefaultWarrior();
+    Warrior w_2 = createDefaultWarrior();
 
-  public Battle() {
-    this.hod = null;
-  }
+    // print the ids of the warriors
+    log("Warrior 1 id: " + w_1.getId());
+    log("Warrior 2 id: " + w_2.getId());
 
-  public Battle(Hod hod) {
-    this.hod = hod;
-  }
+    boolean isBattleContinue = isContinue(w_1, w_2);
+    while (isBattleContinue) {
+      Hod hod_1 = Hod.makeHod(scanner);
+      Hod hod_2 = Hod.makeHod(scanner);
+      w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
+      w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
+      isBattleContinue = isContinue(w_1, w_2);
+    }
+    Result resulter = new Result();
+    resulter.calculate(w_1, w_2);
 
-  public Hod getHod() {
-    return hod;
+    // close the scanner object
+    scanner.close();
   }
 
   /**
@@ -31,7 +55,7 @@ public class Battle {
         h_2.getBodyPartEnumTargetForProtect() == h_1.getBodyPartEnumTargetForHit();
     if (isProtectedPartForHit) {
       Integer powerOfHit = warrior_1.getPower()
-                                    .divide(PROTECT_COEFICENT);
+                                    .divide(PROTECT_COEFFICIENT);
       warrior_2 = warrior_2.hit(powerOfHit);
       return warrior_2;
     }
