@@ -2,7 +2,8 @@ package com.sabeshkin.battle.impl;
 
 import com.sabeshkin.battle.api.BodyParts;
 
-public enum BodyPartEnum implements BodyParts {
+public enum BodyPartEnum
+    implements BodyParts {
 
   HEAD("Head"),
   TORSO("Torso"),

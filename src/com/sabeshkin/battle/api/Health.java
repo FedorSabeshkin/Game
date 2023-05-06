@@ -13,10 +13,11 @@ public interface Health {
   /**
    * уМеньшает здоровье на переbodyданное кол-во единиц.
    */
-  void damage(Health damage);
+  Health damage(Health damage);
 
   /**
    * уВеличивает здоровье на переданное кол-во единиц.
    */
   void treat(Health addingHealth);
+
 }
