@@ -31,8 +31,8 @@ public class Battle {
 
     boolean isBattleContinue = isContinue(w_1, w_2);
     while (isBattleContinue) {
-      Hod hod_1 = Hod.makeHod(scanner);
-      Hod hod_2 = Hod.makeHod(scanner);
+      Hod hod_1 = Hod.tryMakeHod(scanner);
+      Hod hod_2 = Hod.tryMakeHod(scanner);
       w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
       w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
       isBattleContinue = isContinue(w_1, w_2);
@@ -56,12 +56,12 @@ public class Battle {
     Warrior w_2 = createDefaultWarrior();
 
     // print the ids of the warriors
-    log("Warrior 1 id: " + w_1.getId());
-    log("Warrior 2 id: " + w_2.getId());
+    log("Идентификатор воина 1: " + w_1.getId());
+    log("Идентификатор воина 2: " + w_2.getId());
 
     boolean isBattleContinue = isContinue(w_1, w_2);
     while (isBattleContinue) {
-      Hod hod_1 = Hod.makeHod(scanner);
+      Hod hod_1 = Hod.tryMakeHod(scanner);
       Hod hod_2 = npc.makeHod();
       w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
       w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
