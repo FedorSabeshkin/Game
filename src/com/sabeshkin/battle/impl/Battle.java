@@ -4,6 +4,8 @@ import static com.sabeshkin.battle.impl.Warrior.createDefaultWarrior;
 import static com.sabeshkin.format.Formatter.log;
 
 import com.sabeshkin.format.Result;
+import com.sabeshkin.npc.api.Npc;
+import com.sabeshkin.npc.impl.NpcImpl;
 import java.util.Scanner;
 
 /**
@@ -29,8 +31,38 @@ public class Battle {
 
     boolean isBattleContinue = isContinue(w_1, w_2);
     while (isBattleContinue) {
-      Hod hod_1 = Hod.makeHod(scanner);
-      Hod hod_2 = Hod.makeHod(scanner);
+      Hod hod_1 = Hod.tryMakeHod(scanner);
+      Hod hod_2 = Hod.tryMakeHod(scanner);
+      w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
+      w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
+      isBattleContinue = isContinue(w_1, w_2);
+    }
+    Result resulter = new Result();
+    resulter.calculate(w_1, w_2);
+
+    // close the scanner object
+    scanner.close();
+  }
+
+  /**
+   * Реализация логики битвы с NPC.
+   */
+  public void startBattleNpc() {
+    // create a scanner object to read input from System.in
+    Scanner scanner = new Scanner(System.in);
+    // create two warriors with initial health and power values
+    Npc npc = new NpcImpl();
+    Warrior w_1 = createDefaultWarrior();
+    Warrior w_2 = createDefaultWarrior();
+
+    // print the ids of the warriors
+    log("Идентификатор воина 1: " + w_1.getId());
+    log("Идентификатор воина 2: " + w_2.getId());
+
+    boolean isBattleContinue = isContinue(w_1, w_2);
+    while (isBattleContinue) {
+      Hod hod_1 = Hod.tryMakeHod(scanner);
+      Hod hod_2 = npc.makeHod();
       w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
       w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
       isBattleContinue = isContinue(w_1, w_2);
