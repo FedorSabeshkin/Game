@@ -1,7 +1,6 @@
 package com.sabeshkin.economy.api;
 
-import com.sabeshkin.battle.api.WarriorId;
-import com.sabeshkin.economy.excception.NotEnoughMoneyException;
+import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 
 /**
  * Кошелек игрока.
@@ -16,18 +15,23 @@ public interface Wallet {
   /**
    * Оплатить услуги.
    *
-   * @param moneyRecipient кому следует перечислить деньги.
    * @param moneyInTip     сумма, на которую выставлен счет.
    */
-  void payTo(WarriorId moneyRecipient,
-             MoneyInTip moneyInTip) throws
+  void pay(MoneyInTip moneyInTip) throws
       NotEnoughMoneyException;
 
   /**
-   * Пополнение кошелька. Например, после победы в бою.
+   * Пополнение кошелька. Например, после Победы в бою.
    *
    * @param money деньги которые будут зачисленны на счет.
    */
-  void addMoney(Money money);
+  void addMoney(MoneyInTip money);
+
+  /**
+   * Снятие денег со счета кошелька. Например, после Проигрыша в бою.
+   *
+   * @param money деньги которые будут зачисленны на счет.
+   */
+  void subtractMoney(Money money);
 
 }

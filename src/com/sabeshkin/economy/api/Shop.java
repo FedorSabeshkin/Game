@@ -1,7 +1,7 @@
 package com.sabeshkin.economy.api;
 
 import com.sabeshkin.battle.api.Outfit;
-import com.sabeshkin.economy.excception.NotEnoughMoneyException;
+import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 
 /**
  * Магазин, в котором можно приобрести обмундирование.

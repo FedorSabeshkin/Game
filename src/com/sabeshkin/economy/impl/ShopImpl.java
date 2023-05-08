@@ -1,12 +1,11 @@
 package com.sabeshkin.economy.impl;
 
 import com.sabeshkin.battle.api.Outfit;
-import com.sabeshkin.battle.impl.WarriorIdImpl;
 import com.sabeshkin.economy.api.ArrayGoods;
 import com.sabeshkin.economy.api.MoneyInTip;
 import com.sabeshkin.economy.api.Shop;
 import com.sabeshkin.economy.api.Wallet;
-import com.sabeshkin.economy.excception.NotEnoughMoneyException;
+import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 import java.util.Objects;
 
 /**
@@ -32,7 +31,7 @@ public class ShopImpl
       NotEnoughMoneyException {
     MoneyInTip moneyInTip = goods.get(outfitKey)
                                  .getPrice();
-    wallet.payTo(new WarriorIdImpl(), moneyInTip);
+    wallet.pay(moneyInTip);
     return goods.get(outfitKey)
                 .getOutfit();
   }

@@ -38,4 +38,9 @@ public class MoneyInTipImpl
     value += money.getValue();
   }
 
+  @Override
+  public String toString() {
+    return value.toString();
+  }
+
 }

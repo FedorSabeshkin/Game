@@ -1,4 +1,4 @@
-package com.sabeshkin.economy.excception;
+package com.sabeshkin.economy.exception;
 
 /**
  * Исключение, выбрасываемое, когда пытается быть списанна сумма, меньше той, что находится в

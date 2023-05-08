@@ -6,6 +6,8 @@ import com.sabeshkin.battle.api.Health;
 import com.sabeshkin.battle.api.Outfit;
 import com.sabeshkin.battle.api.Power;
 import com.sabeshkin.battle.api.WarriorId;
+import com.sabeshkin.economy.api.Wallet;
+import com.sabeshkin.economy.impl.WalletImpl;
 
 /**
  * Боец.
@@ -20,17 +22,22 @@ public class Warrior {
 
   private WarriorId id;
 
+  private Wallet wallet;
+
+
   /**
    * Боец.
    */
   public Warrior(WarriorId id,
                  Health health,
                  Power power,
-                 Outfit outfit) {
+                 Outfit outfit,
+                 Wallet wallet) {
     this.health = health;
     this.power = power;
     this.outfit = outfit;
     this.id = id;
+    this.wallet = wallet;
   }
 
   /**
@@ -38,29 +45,35 @@ public class Warrior {
    */
   public Warrior(Health health,
                  Power power,
-                 Outfit outfit) {
+                 Outfit outfit,
+                 Wallet wallet) {
     this.health = health;
     this.power = power;
     this.outfit = outfit;
     this.id = new WarriorIdImpl();
+    this.wallet = wallet;
   }
 
   /**
    * Боец с автогенерацией id, без обмундирования.
    */
   public Warrior(HealthImpl health,
-                 PowerImpl power) {
+                 PowerImpl power,
+                 Wallet wallet) {
     this.health = health;
     this.power = power;
     this.outfit = null;
     this.id = new WarriorIdImpl();
+    this.wallet = wallet;
   }
 
   /**
    * Создание бойца с дефолтными характеристиками.
    */
   public static Warrior createDefaultWarrior() {
-    return new Warrior(new HealthImpl(100, 100), new PowerImpl(90, 90)
+    return new Warrior(new HealthImpl(100, 100),
+                       new PowerImpl(90, 90),
+                       new WalletImpl()
     );
   }
 
@@ -93,6 +106,13 @@ public class Warrior {
   }
 
   /**
+   * Кошелек.
+   */
+  public Wallet getWallet() {
+    return wallet;
+  }
+
+  /**
    * Получаем бойца после атаки по нему.
    *
    * @param attackPower сила атаки.
@@ -106,7 +126,8 @@ public class Warrior {
     return new Warrior(id,
                        healthAfterDamage,
                        power,
-                       outfit);
+                       outfit,
+                       wallet);
   }
 
 }
