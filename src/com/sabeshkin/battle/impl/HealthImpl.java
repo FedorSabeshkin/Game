@@ -43,8 +43,11 @@ public class HealthImpl
   }
 
   @Override
-  public void treat(Health addingHealth) {
-    this.currentHealth += addingHealth.getCurrentHealth();
+  public Health treat(Health addingHealth) {
+    Integer newCurrentHealth = this.currentHealth + addingHealth.getCurrentHealth();
+    return new HealthImpl(
+        newCurrentHealth,
+        this.maxHealth);
   }
 
   @Override

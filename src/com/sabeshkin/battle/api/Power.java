@@ -18,7 +18,7 @@ public interface Power {
   /**
    * уВеличивает силу на переданное кол-во единиц.
    */
-  void add(Power addingPower);
+  Power add(Power addingPower);
 
   /**
    * Разделить значение силы на заданный коэфицент.

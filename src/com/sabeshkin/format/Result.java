@@ -15,8 +15,6 @@ import com.sabeshkin.economy.impl.MoneyInTipImpl;
  */
 public class Result {
 
-  private final WarriorId gameOwnerId;
-
   private final MoneyInTip loosePrice;
 
   private final MoneyInTip reward;
@@ -25,7 +23,6 @@ public class Result {
    * Расчитывает итог боя.
    */
   public Result() {
-    this.gameOwnerId = new WarriorIdImpl();
     this.loosePrice = new MoneyInTipImpl(10);
     this.reward = new MoneyInTipImpl(10);
   }

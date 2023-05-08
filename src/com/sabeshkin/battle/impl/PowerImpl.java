@@ -32,8 +32,9 @@ public class PowerImpl
   }
 
   @Override
-  public void add(Power addingPower) {
-    this.currentPower += addingPower.getCurrentPower();
+  public Power add(Power addingPower) {
+    Integer currentPowerAfterAdd = this.currentPower + addingPower.getCurrentPower();
+    return new PowerImpl(currentPowerAfterAdd, maxPower);
   }
 
   @Override

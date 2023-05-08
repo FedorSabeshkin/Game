@@ -24,6 +24,7 @@ public class Battle {
     // create two warriors with initial health and power values
     Warrior w_1 = createDefaultWarrior();
     Warrior w_2 = createDefaultWarrior();
+    w_1 = w_1.useOutfit();
 
     // print the ids of the warriors
     log("Warrior 1 id: " + w_1.getId());
@@ -54,11 +55,10 @@ public class Battle {
     Npc npc = new NpcImpl();
     Warrior w_1 = createDefaultWarrior();
     Warrior w_2 = createDefaultWarrior();
-
+    w_1 = w_1.useOutfit();
     // print the ids of the warriors
     log("Идентификатор воина 1: " + w_1.getId());
     log("Идентификатор воина 2: " + w_2.getId());
-
     boolean isBattleContinue = isContinue(w_1, w_2);
     while (isBattleContinue) {
       Hod hod_1 = Hod.tryMakeHod(scanner);

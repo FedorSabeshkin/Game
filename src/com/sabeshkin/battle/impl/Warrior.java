@@ -62,8 +62,8 @@ public class Warrior {
                  Wallet wallet) {
     this.health = health;
     this.power = power;
-    this.outfit = null;
     this.id = new WarriorIdImpl();
+    this.outfit = OutfitImpl.createOutfitWithZeros(id);
     this.wallet = wallet;
   }
 
@@ -127,6 +127,22 @@ public class Warrior {
                        healthAfterDamage,
                        power,
                        outfit,
+                       wallet);
+  }
+
+  /**
+   * Применяет характеристики обмундирования к бойцу.
+   */
+  public Warrior useOutfit() {
+    Health healthAfterOutfit =
+        health.treat(outfit.getHealth());
+    Power powerAfterOutfit =
+        power.add(outfit.getPower());
+    Outfit outfitAfterUse = OutfitImpl.createOutfitWithZeros(id);
+    return new Warrior(id,
+                       healthAfterOutfit,
+                       powerAfterOutfit,
+                       outfitAfterUse,
                        wallet);
   }
 

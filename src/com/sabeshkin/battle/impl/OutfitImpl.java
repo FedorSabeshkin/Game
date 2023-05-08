@@ -29,6 +29,17 @@ public class OutfitImpl
     this.powerForAdd = powerForAdd;
   }
 
+  /**
+   * Создает Outfit не несущий никакого преимущества.
+   */
+  public static Outfit createOutfitWithZeros(WarriorId ownerId) {
+    return new OutfitImpl(ownerId,
+                          new HealthImpl(0),
+                          new PowerImpl(0,
+                                        0));
+  }
+
+
   @Override
   public WarriorId getWarriorId() {
     return ownerId;
