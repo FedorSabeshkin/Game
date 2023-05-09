@@ -10,6 +10,8 @@ import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 import com.sabeshkin.economy.impl.ShopImpl;
 import com.sabeshkin.format.api.Statistic;
 import com.sabeshkin.format.impl.StatisticImpl;
+import com.sabeshkin.timer.api.Timer;
+import com.sabeshkin.timer.impl.TimerImpl;
 import java.util.Scanner;
 
 /**
@@ -25,6 +27,9 @@ public class Game {
 
   private final PersonalRoom personalRoom;
 
+  private final Timer timer;
+
+
   /**
    * Класс контейнер для реализации логики игры.
    */
@@ -33,23 +38,22 @@ public class Game {
     this.statistic = new StatisticImpl();
     this.shop = ShopImpl.createDefault();
     this.personalRoom = new PersonalRoomImpl();
+    this.timer = new TimerImpl();
   }
 
   /**
    * Выполняет проверку времени проведенного в игре и запускает выбор комнат игроком.
    */
   public void start() {
-    // Добавить класс Timer с методом .isEnd(), который проверяет завершилась ли игра.
-    while (DateT) {
-
+    while (!timer.isEnd()) {
+      selectAction();
     }
   }
 
   /**
    * Получение следующей команды из терминала и ее выполнение.
    */
-  private void selectAction() throws
-      NotEnoughMoneyException {
+  private void selectAction() {
     Scanner scanner = new Scanner(System.in);
     String in = scanner.nextLine()
                        .toUpperCase();
