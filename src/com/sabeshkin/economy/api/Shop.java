@@ -27,8 +27,8 @@ public interface Shop {
    * @param warrior игрок.
    * @param scanner ввод ответов.
    */
-  Warrior showGoods(Warrior warrior,
-                 Scanner scanner) throws
+  Warrior goToShop(Warrior warrior,
+                   Scanner scanner) throws
       NotEnoughMoneyException;
 
 }

@@ -9,7 +9,6 @@ import com.sabeshkin.economy.api.MoneyInTip;
 import com.sabeshkin.economy.api.Shop;
 import com.sabeshkin.economy.api.Wallet;
 import com.sabeshkin.economy.exception.NotEnoughMoneyException;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -47,8 +46,8 @@ public class ShopImpl
   }
 
   @Override
-  public Warrior showGoods(Warrior warrior,
-                           Scanner scanner) {
+  public Warrior goToShop(Warrior warrior,
+                          Scanner scanner) {
     toString();
     log("Введите id товара для его покупки");
     String answer = scanner.nextLine()
@@ -74,8 +73,8 @@ public class ShopImpl
     } catch (NotEnoughMoneyException exception) {
       log("У вас недостаточно средств для покупки. "
               + "Выберите другой товар или выйдите из магазина.");
-      return showGoods(warrior,
-                       scanner);
+      return goToShop(warrior,
+                      scanner);
     }
   }
 

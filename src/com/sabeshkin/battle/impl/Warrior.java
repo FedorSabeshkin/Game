@@ -8,6 +8,8 @@ import com.sabeshkin.battle.api.Power;
 import com.sabeshkin.battle.api.WarriorId;
 import com.sabeshkin.economy.api.Wallet;
 import com.sabeshkin.economy.impl.WalletImpl;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Боец.
@@ -19,6 +21,8 @@ public class Warrior {
   private Power power;
 
   private Outfit outfit;
+
+  private Set<Outfit> baggageOutfits;
 
   private WarriorId id;
 
@@ -38,6 +42,7 @@ public class Warrior {
     this.outfit = outfit;
     this.id = id;
     this.wallet = wallet;
+    this.baggageOutfits = new HashSet<>();
   }
 
   /**
@@ -52,6 +57,7 @@ public class Warrior {
     this.outfit = outfit;
     this.id = new WarriorIdImpl();
     this.wallet = wallet;
+    this.baggageOutfits = new HashSet<>();
   }
 
   /**
@@ -65,6 +71,7 @@ public class Warrior {
     this.id = new WarriorIdImpl();
     this.outfit = OutfitImpl.createOutfitWithZeros(id);
     this.wallet = wallet;
+    this.baggageOutfits = new HashSet<>();
   }
 
   /**
@@ -77,6 +84,7 @@ public class Warrior {
     this.id = prevWarriorState.id;
     this.outfit = prevWarriorState.outfit;
     this.wallet = prevWarriorState.wallet;
+    this.baggageOutfits = new HashSet<>();
   }
 
   /**
@@ -89,6 +97,7 @@ public class Warrior {
     this.id = prevWarriorState.id;
     this.outfit = outfit;
     this.wallet = prevWarriorState.wallet;
+    this.baggageOutfits = new HashSet<>();
   }
 
   /**
@@ -134,6 +143,13 @@ public class Warrior {
    */
   public Wallet getWallet() {
     return wallet;
+  }
+
+  /**
+   * Имеющиеся личное обмундирование, которое в данный момент НЕ надето.
+   */
+  public Set<Outfit> getBaggageOutfits() {
+    return baggageOutfits;
   }
 
   /**
@@ -183,6 +199,7 @@ public class Warrior {
    * Боец в новом обмундировании.
    */
   public Warrior dress(Outfit nextOutfit) {
+    baggageOutfits.add(outfit);
     return new Warrior(nextOutfit, this);
   }
 

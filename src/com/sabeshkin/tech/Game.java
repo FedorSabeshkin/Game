@@ -58,7 +58,7 @@ public class Game {
                               .treatToDefaultSize();
         statistic = battleResult.getStatistic();
       case "М":
-        warrior = shop.showGoods(warrior, scanner);
+        warrior = shop.goToShop(warrior, scanner);
       case "Л":
         personalRoom.in(warrior, scanner);
       case "С":
