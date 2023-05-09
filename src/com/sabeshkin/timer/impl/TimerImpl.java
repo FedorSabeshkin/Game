@@ -1,6 +1,7 @@
 package com.sabeshkin.timer.impl;
 
 import com.sabeshkin.timer.api.Timer;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -25,6 +26,14 @@ public class TimerImpl
   @Override
   public boolean isEnd() {
     return endGameTime.isBefore(LocalDateTime.now());
+  }
+
+  @Override
+  public long showTimeLeft() {
+    return Duration.between(
+                       LocalDateTime.now(),
+                       endGameTime)
+                   .toMinutes();
   }
 
 }

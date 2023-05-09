@@ -4,6 +4,7 @@ import static com.sabeshkin.format.Formatter.log;
 
 import com.sabeshkin.battle.api.Outfit;
 import com.sabeshkin.battle.api.PersonalRoom;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -15,12 +16,12 @@ public class PersonalRoomImpl
   private Outfit[] outfits;
 
   @Override
-  public Warrior showOutfits(Warrior warrior,
-                             Scanner scanner) {
+  public Warrior inRoom(Warrior warrior,
+                        Scanner scanner) {
     outfits = warrior.getBaggageOutfits()
                      .toArray(new Outfit[warrior.getBaggageOutfits()
                                                 .size()]);
-    log(outfits);
+    showOutfits(outfits);
     log("Введите id обмундирования что бы его надеть.");
     String answer = scanner.nextLine()
                            .toUpperCase()
@@ -29,6 +30,17 @@ public class PersonalRoomImpl
       return warrior;
     }
     return tryChangePrevOutfitToSelected(warrior, answer, scanner);
+  }
+
+  private void showOutfits(Outfit[] outfits) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < outfits.length; i++) {
+      sb.append(i)
+        .append(": ")
+        .append(outfits[i])
+        .append("\n");
+    }
+    log(sb.toString());
   }
 
   /**
@@ -49,7 +61,7 @@ public class PersonalRoomImpl
         NumberFormatException | ArrayIndexOutOfBoundsException exception) {
       log("Вы ввели неверный индекс обмундирования. "
               + "Попробуйте снова выбрать из того, что представлен в списке");
-      return showOutfits(warrior, scanner);
+      return inRoom(warrior, scanner);
     }
   }
 
@@ -65,6 +77,8 @@ public class PersonalRoomImpl
     Outfit prevOutfit = warrior.getOutfit();
     warrior.getBaggageOutfits()
            .add(prevOutfit);
+    warrior.getBaggageOutfits()
+           .remove(selectedOutfit);
     return new Warrior(selectedOutfit, warrior);
   }
 

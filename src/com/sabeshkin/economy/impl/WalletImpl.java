@@ -11,6 +11,8 @@ import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 public class WalletImpl
     implements Wallet {
 
+  public static final int DEFAULT_BALANCE = 30;
+
   private MoneyInTip balance;
 
   /**
@@ -18,6 +20,11 @@ public class WalletImpl
    */
   public WalletImpl() {
     this.balance = new MoneyInTipImpl(0);
+  }
+
+  public static Wallet createDefault() {
+    MoneyInTip balanceForWallet = new MoneyInTipImpl(DEFAULT_BALANCE);
+    return new WalletImpl(balanceForWallet);
   }
 
   /**

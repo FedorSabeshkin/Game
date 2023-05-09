@@ -97,7 +97,7 @@ public class Warrior {
     this.id = prevWarriorState.id;
     this.outfit = outfit;
     this.wallet = prevWarriorState.wallet;
-    this.baggageOutfits = new HashSet<>();
+    this.baggageOutfits = prevWarriorState.baggageOutfits;
   }
 
   /**
@@ -106,7 +106,7 @@ public class Warrior {
   public static Warrior createDefaultWarrior() {
     return new Warrior(HealthImpl.createDefaultHealth(),
                        new PowerImpl(90, 90),
-                       new WalletImpl()
+                       WalletImpl.createDefault()
     );
   }
 

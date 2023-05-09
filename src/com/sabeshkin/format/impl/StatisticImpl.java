@@ -1,5 +1,7 @@
 package com.sabeshkin.format.impl;
 
+import static com.sabeshkin.format.Formatter.log;
+
 import com.sabeshkin.format.api.Statistic;
 
 /**
@@ -36,7 +38,7 @@ public class StatisticImpl
 
   @Override
   public void show() {
-    toString();
+    log(toString());
   }
 
   @Override
@@ -58,8 +60,8 @@ public class StatisticImpl
   public String toString() {
     return "Статистика \n" +
         "Победы=" + winAmount +
-        "\n Поражения=" + looseAmount +
-        "\n Ничьи=" + standoffAmount;
+        "\nПоражения=" + looseAmount +
+        "\nНичьи=" + standoffAmount;
   }
 
 }

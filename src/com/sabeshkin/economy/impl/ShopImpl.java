@@ -48,7 +48,7 @@ public class ShopImpl
   @Override
   public Warrior goToShop(Warrior warrior,
                           Scanner scanner) {
-    toString();
+    log(toString());
     log("Введите id товара для его покупки");
     String answer = scanner.nextLine()
                            .toUpperCase()
@@ -69,6 +69,8 @@ public class ShopImpl
                          Scanner scanner) {
     try {
       Outfit outfit = buy(outfitKey, warrior.getWallet());
+      log("Покупка успешно совершена.");
+      log("На бойца надето новое обмундирование.");
       return warrior.dress(outfit);
     } catch (NotEnoughMoneyException exception) {
       log("У вас недостаточно средств для покупки. "

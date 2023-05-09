@@ -10,4 +10,9 @@ public interface Timer {
    */
   boolean isEnd();
 
+  /**
+   * Показать оставшееся время.
+   */
+  long showTimeLeft();
+
 }
