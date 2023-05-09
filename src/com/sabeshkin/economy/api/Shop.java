@@ -1,7 +1,9 @@
 package com.sabeshkin.economy.api;
 
 import com.sabeshkin.battle.api.Outfit;
+import com.sabeshkin.battle.impl.Warrior;
 import com.sabeshkin.economy.exception.NotEnoughMoneyException;
+import java.util.Scanner;
 
 /**
  * Магазин, в котором можно приобрести обмундирование.
@@ -15,7 +17,18 @@ public interface Shop {
    * @param outfitKey id товара.
    * @return купленное обмундирование.
    */
-  Outfit buy(int outfitKey, Wallet wallet) throws
+  Outfit buy(int outfitKey,
+             Wallet wallet) throws
+      NotEnoughMoneyException;
+
+  /**
+   * Показывает список товаров и предлагает сделать покупку.
+   *
+   * @param warrior игрок.
+   * @param scanner ввод ответов.
+   */
+  Warrior showGoods(Warrior warrior,
+                 Scanner scanner) throws
       NotEnoughMoneyException;
 
 }

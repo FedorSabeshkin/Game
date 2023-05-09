@@ -21,6 +21,14 @@ public class PowerImpl
     this.maxPower = maxPower;
   }
 
+  /**
+   * Сила - Обертки над стандартным числовым типом.
+   */
+  public PowerImpl(Integer currentPower) {
+    this.currentPower = currentPower;
+    this.maxPower = currentPower;
+  }
+
   @Override
   public Integer getCurrentPower() {
     return currentPower;

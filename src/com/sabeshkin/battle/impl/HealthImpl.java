@@ -28,7 +28,7 @@ public class HealthImpl
    */
   public HealthImpl(Integer currentHealth) {
     this.currentHealth = currentHealth;
-    this.maxHealth = null;
+    this.maxHealth = currentHealth;
   }
 
   /**

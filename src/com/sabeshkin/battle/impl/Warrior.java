@@ -80,6 +80,18 @@ public class Warrior {
   }
 
   /**
+   * Боец в новом обмундировании.
+   */
+  public Warrior(Outfit outfit,
+                 Warrior prevWarriorState) {
+    this.health = prevWarriorState.health;
+    this.power = prevWarriorState.getPower();
+    this.id = prevWarriorState.id;
+    this.outfit = outfit;
+    this.wallet = prevWarriorState.wallet;
+  }
+
+  /**
    * Создание бойца с дефолтными характеристиками.
    */
   public static Warrior createDefaultWarrior() {
@@ -161,10 +173,17 @@ public class Warrior {
    * Боец с востановленным после боя здоровьем.
    */
   public Warrior treatToDefaultSize() {
-    Health healthAfterOutfit = createDefaultHealth();
+    Health healthAfterOutfit = HealthImpl.createDefaultHealth();
     return new Warrior(
         healthAfterOutfit,
         this);
+  }
+
+  /**
+   * Боец в новом обмундировании.
+   */
+  public Warrior dress(Outfit nextOutfit) {
+    return new Warrior(nextOutfit, this);
   }
 
 }

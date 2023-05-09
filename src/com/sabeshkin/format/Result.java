@@ -96,10 +96,10 @@ public class Result {
     try {
       warriorWallet.pay(loosePrice);
       showSelfBalance(warriorWallet);
-      return w_1;
     } catch (NotEnoughMoneyException exception) {
       log("Вы проиграли все деньги. Игра оконченна.");
     }
+    return w_1;
   }
 
   /**
