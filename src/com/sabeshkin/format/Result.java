@@ -2,13 +2,14 @@ package com.sabeshkin.format;
 
 import static com.sabeshkin.format.Formatter.log;
 
-import com.sabeshkin.battle.api.WarriorId;
+import com.sabeshkin.battle.api.BattleResult;
+import com.sabeshkin.battle.impl.BattleResultImpl;
 import com.sabeshkin.battle.impl.Warrior;
-import com.sabeshkin.battle.impl.WarriorIdImpl;
 import com.sabeshkin.economy.api.MoneyInTip;
 import com.sabeshkin.economy.api.Wallet;
 import com.sabeshkin.economy.exception.NotEnoughMoneyException;
 import com.sabeshkin.economy.impl.MoneyInTipImpl;
+import com.sabeshkin.format.api.Statistic;
 
 /**
  * Расчитывает итог боя.
@@ -25,6 +26,31 @@ public class Result {
   public Result() {
     this.loosePrice = new MoneyInTipImpl(10);
     this.reward = new MoneyInTipImpl(10);
+  }
+
+  /**
+   * Расчитывает итог боя.
+   */
+  public BattleResult calculate(Warrior w_1,
+                                Warrior w_2,
+                                Statistic statistic) {
+    boolean isStandoff = isStandoff(w_1, w_2);
+    if (isStandoff) {
+      w_1 = payLoose(w_1);
+      statistic.addOneStandoff();
+      log("Ничья");
+      return new BattleResultImpl(w_1, statistic);
+    }
+    boolean isFirstWin = isFirstWin(w_1, w_2);
+    if (isFirstWin) {
+      w_1 = win(w_1);
+      statistic.addOneWin();
+      return new BattleResultImpl(w_1, statistic);
+    }
+    w_1 = payLoose(w_1);
+    statistic.addOneLoose();
+    log("Поражение. Будут новые победы.");
+    return new BattleResultImpl(w_1, statistic);
   }
 
   /**
@@ -50,11 +76,12 @@ public class Result {
   /**
    * Обработка в случае Победы.
    */
-  private void win(Warrior w_1) {
+  private Warrior win(Warrior w_1) {
     Wallet warriorWallet = w_1.getWallet();
     warriorWallet.addMoney(reward);
     log("Победа!");
     showSelfBalance(warriorWallet);
+    return w_1;
   }
 
   private void showSelfBalance(Wallet warriorWallet) {
@@ -64,11 +91,12 @@ public class Result {
   /**
    * Обработка в случае Ничьей/Проигрыша.
    */
-  private void payLoose(Warrior w_1) {
+  private Warrior payLoose(Warrior w_1) {
     Wallet warriorWallet = w_1.getWallet();
     try {
       warriorWallet.pay(loosePrice);
       showSelfBalance(warriorWallet);
+      return w_1;
     } catch (NotEnoughMoneyException exception) {
       log("Вы проиграли все деньги. Игра оконченна.");
     }

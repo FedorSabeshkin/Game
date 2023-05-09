@@ -57,8 +57,8 @@ public class Warrior {
   /**
    * Боец с автогенерацией id, без обмундирования.
    */
-  public Warrior(HealthImpl health,
-                 PowerImpl power,
+  public Warrior(Health health,
+                 Power power,
                  Wallet wallet) {
     this.health = health;
     this.power = power;
@@ -68,10 +68,22 @@ public class Warrior {
   }
 
   /**
+   * Боец с обновленным здоровьем.
+   */
+  public Warrior(Health health,
+                 Warrior prevWarriorState) {
+    this.health = health;
+    this.power = prevWarriorState.getPower();
+    this.id = prevWarriorState.id;
+    this.outfit = prevWarriorState.outfit;
+    this.wallet = prevWarriorState.wallet;
+  }
+
+  /**
    * Создание бойца с дефолтными характеристиками.
    */
   public static Warrior createDefaultWarrior() {
-    return new Warrior(new HealthImpl(100, 100),
+    return new Warrior(HealthImpl.createDefaultHealth(),
                        new PowerImpl(90, 90),
                        new WalletImpl()
     );
@@ -138,12 +150,21 @@ public class Warrior {
         health.treat(outfit.getHealth());
     Power powerAfterOutfit =
         power.add(outfit.getPower());
-    Outfit outfitAfterUse = OutfitImpl.createOutfitWithZeros(id);
     return new Warrior(id,
                        healthAfterOutfit,
                        powerAfterOutfit,
-                       outfitAfterUse,
+                       outfit,
                        wallet);
+  }
+
+  /**
+   * Боец с востановленным после боя здоровьем.
+   */
+  public Warrior treatToDefaultSize() {
+    Health healthAfterOutfit = createDefaultHealth();
+    return new Warrior(
+        healthAfterOutfit,
+        this);
   }
 
 }

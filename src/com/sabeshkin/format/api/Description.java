@@ -1,4 +1,4 @@
-package com.sabeshkin.format;
+package com.sabeshkin.format.api;
 
 /**
  * Описание чего бы то нибыло.

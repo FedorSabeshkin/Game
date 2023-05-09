@@ -10,6 +10,7 @@ public interface Health {
    */
   Integer getCurrentHealth();
 
+
   /**
    * уМеньшает здоровье на переbodyданное кол-во единиц.
    */

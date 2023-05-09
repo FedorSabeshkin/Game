@@ -1,6 +1,6 @@
 package com.sabeshkin.economy.impl;
 
-import com.sabeshkin.format.Description;
+import com.sabeshkin.format.api.Description;
 
 /**
  * Описание товара.
