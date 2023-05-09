@@ -1,5 +1,10 @@
 package com.sabeshkin.economy.impl;
 
+import com.sabeshkin.battle.api.WarriorId;
+import com.sabeshkin.battle.impl.HealthImpl;
+import com.sabeshkin.battle.impl.OutfitImpl;
+import com.sabeshkin.battle.impl.PowerImpl;
+import com.sabeshkin.battle.impl.WarriorIdImpl;
 import com.sabeshkin.economy.api.ArrayGoods;
 import com.sabeshkin.economy.api.Good;
 import java.util.ArrayList;
@@ -17,6 +22,36 @@ public class ArrayGoodsImpl
    */
   public ArrayGoodsImpl(ArrayList<Good> goods) {
     this.goods = goods;
+  }
+
+  public static ArrayGoods createDefault() {
+    ArrayList<Good> defaultGoods = new ArrayList<>();
+    WarriorId shopId = new WarriorIdImpl();
+    defaultGoods.add(
+        new GoodImpl(
+            new MoneyInTipImpl(10),
+            new OutfitImpl(shopId,
+                           new HealthImpl(20),
+                           new PowerImpl(0)),
+            new GoodDescriptionImpl("Кольчуга")
+        ));
+    defaultGoods.add(
+        new GoodImpl(
+            new MoneyInTipImpl(10),
+            new OutfitImpl(shopId,
+                           new HealthImpl(10),
+                           new PowerImpl(0)),
+            new GoodDescriptionImpl("Шлем")
+        ));
+    defaultGoods.add(
+        new GoodImpl(
+            new MoneyInTipImpl(10),
+            new OutfitImpl(shopId,
+                           new HealthImpl(10),
+                           new PowerImpl(0)),
+            new GoodDescriptionImpl("Меч")
+        ));
+    return new ArrayGoodsImpl(defaultGoods);
   }
 
   @Override

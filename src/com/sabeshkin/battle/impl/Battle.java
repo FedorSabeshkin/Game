@@ -3,7 +3,9 @@ package com.sabeshkin.battle.impl;
 import static com.sabeshkin.battle.impl.Warrior.createDefaultWarrior;
 import static com.sabeshkin.format.Formatter.log;
 
+import com.sabeshkin.battle.api.BattleResult;
 import com.sabeshkin.format.Result;
+import com.sabeshkin.format.api.Statistic;
 import com.sabeshkin.npc.api.Npc;
 import com.sabeshkin.npc.impl.NpcImpl;
 import java.util.Scanner;
@@ -72,6 +74,31 @@ public class Battle {
 
     // close the scanner object
     scanner.close();
+  }
+
+  /**
+   * Реализация логики битвы с NPC.
+   */
+  public BattleResult startWithNpc(Warrior w_1,
+                                   Statistic statistic,
+                                   Scanner scanner) {
+
+    Npc npc = new NpcImpl();
+    Warrior w_2 = createDefaultWarrior();
+    w_1 = w_1.useOutfit();
+    // print the ids of the warriors
+    log("Идентификатор воина 1: " + w_1.getId());
+    log("Идентификатор воина 2: " + w_2.getId());
+    boolean isBattleContinue = isContinue(w_1, w_2);
+    while (isBattleContinue) {
+      Hod hod_1 = Hod.tryMakeHod(scanner);
+      Hod hod_2 = npc.makeHod();
+      w_2 = calculateDamage(hod_1, hod_2, w_1, w_2);
+      w_1 = calculateDamage(hod_2, hod_1, w_2, w_1);
+      isBattleContinue = isContinue(w_1, w_2);
+    }
+    Result resulter = new Result();
+    return resulter.calculate(w_1, w_2, statistic);
   }
 
   /**

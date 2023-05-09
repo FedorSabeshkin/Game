@@ -1,7 +1,7 @@
 package com.sabeshkin.economy.api;
 
 import com.sabeshkin.battle.api.Outfit;
-import com.sabeshkin.format.Description;
+import com.sabeshkin.format.api.Description;
 
 /**
  * Товар на полке в магазине

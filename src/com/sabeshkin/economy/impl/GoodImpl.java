@@ -3,7 +3,7 @@ package com.sabeshkin.economy.impl;
 import com.sabeshkin.battle.api.Outfit;
 import com.sabeshkin.economy.api.Good;
 import com.sabeshkin.economy.api.MoneyInTip;
-import com.sabeshkin.format.Description;
+import com.sabeshkin.format.api.Description;
 import java.util.Objects;
 
 /**

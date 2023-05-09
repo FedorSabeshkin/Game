@@ -11,6 +11,7 @@ public interface ArrayGoods {
    * @param goodIndex индекс товара в массиве.
    * @return товар.
    */
-  Good get(int goodIndex);
+  Good get(int goodIndex) throws
+      IndexOutOfBoundsException;
 
 }
