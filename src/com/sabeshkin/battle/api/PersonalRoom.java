@@ -1,5 +1,8 @@
 package com.sabeshkin.battle.api;
 
+import com.sabeshkin.battle.impl.Warrior;
+import java.util.Scanner;
+
 /**
  * Комната в которой хранится личное обмундирование.
  */
@@ -8,11 +11,7 @@ public interface PersonalRoom {
   /**
    * Показывает массив обмундирования.
    */
-  void showOutfits();
-
-  /**
-   * Дает бойцу выбранное обмундирование и снимает существующее.
-   */
-  void dressOutfit(int outfitKey);
+  Warrior showOutfits(Warrior warrior,
+                      Scanner scanner);
 
 }

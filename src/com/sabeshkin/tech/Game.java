@@ -1,7 +1,9 @@
 package com.sabeshkin.tech;
 
+import com.sabeshkin.battle.api.PersonalRoom;
 import com.sabeshkin.battle.impl.Battle;
 import com.sabeshkin.battle.api.BattleResult;
+import com.sabeshkin.battle.impl.PersonalRoomImpl;
 import com.sabeshkin.battle.impl.Warrior;
 import com.sabeshkin.economy.api.Shop;
 import com.sabeshkin.economy.exception.NotEnoughMoneyException;
@@ -21,6 +23,8 @@ public class Game {
 
   private final Shop shop;
 
+  private final PersonalRoom personalRoom;
+
   /**
    * Класс контейнер для реализации логики игры.
    */
@@ -28,6 +32,7 @@ public class Game {
     this.warrior = Warrior.createDefaultWarrior();
     this.statistic = new StatisticImpl();
     this.shop = ShopImpl.createDefault();
+    this.personalRoom = new PersonalRoomImpl();
   }
 
   /**
@@ -60,7 +65,7 @@ public class Game {
       case "М":
         warrior = shop.goToShop(warrior, scanner);
       case "Л":
-        personalRoom.in(warrior, scanner);
+        personalRoom.showOutfits(warrior, scanner);
       case "С":
         statistic.show();
       case "X":
