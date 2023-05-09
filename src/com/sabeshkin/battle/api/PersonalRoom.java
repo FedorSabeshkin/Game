@@ -11,7 +11,7 @@ public interface PersonalRoom {
   /**
    * Показывает массив обмундирования.
    */
-  Warrior showOutfits(Warrior warrior,
-                      Scanner scanner);
+  Warrior inRoom(Warrior warrior,
+                 Scanner scanner);
 
 }

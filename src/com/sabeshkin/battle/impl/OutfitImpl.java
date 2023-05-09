@@ -76,11 +76,8 @@ public class OutfitImpl
 
   @Override
   public String toString() {
-    return "OutfitImpl{" +
-        "ownerId=" + ownerId +
-        ", healthForAdd=" + healthForAdd +
-        ", powerForAdd=" + powerForAdd +
-        '}';
+    return "Здоровье+" + healthForAdd.getCurrentHealth() +
+        "\n Сила+" + powerForAdd.getCurrentPower();
   }
 
 }

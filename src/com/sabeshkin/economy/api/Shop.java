@@ -28,7 +28,6 @@ public interface Shop {
    * @param scanner ввод ответов.
    */
   Warrior goToShop(Warrior warrior,
-                   Scanner scanner) throws
-      NotEnoughMoneyException;
+                   Scanner scanner) ;
 
 }

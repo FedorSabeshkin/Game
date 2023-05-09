@@ -31,7 +31,7 @@ public class ArrayGoodsImpl
         new GoodImpl(
             new MoneyInTipImpl(10),
             new OutfitImpl(shopId,
-                           new HealthImpl(20),
+                           new HealthImpl(200),
                            new PowerImpl(0)),
             new GoodDescriptionImpl("Кольчуга")
         ));
@@ -47,8 +47,8 @@ public class ArrayGoodsImpl
         new GoodImpl(
             new MoneyInTipImpl(10),
             new OutfitImpl(shopId,
-                           new HealthImpl(10),
-                           new PowerImpl(0)),
+                           new HealthImpl(0),
+                           new PowerImpl(10)),
             new GoodDescriptionImpl("Меч")
         ));
     return new ArrayGoodsImpl(defaultGoods);
@@ -61,8 +61,16 @@ public class ArrayGoodsImpl
 
   @Override
   public String toString() {
-    return "Массив товаров:"
-        + goods;
+    StringBuilder sb = new StringBuilder();
+    sb.append("\n");
+    for (int i = 0; i < goods.size(); i++) {
+      Good good = goods.get(i);
+      sb.append(i)
+        .append(": ")
+        .append(good)
+        .append("\n");
+    }
+    return sb.toString();
   }
 
 }

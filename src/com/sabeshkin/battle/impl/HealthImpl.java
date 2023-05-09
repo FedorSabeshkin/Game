@@ -45,6 +45,9 @@ public class HealthImpl
   @Override
   public Health damage(Health damage) {
     Integer newCurrentHealth = this.currentHealth - damage.getCurrentHealth();
+    if (newCurrentHealth < 0) {
+      newCurrentHealth = 0;
+    }
     return new HealthImpl(
         newCurrentHealth,
         this.maxHealth);
@@ -60,7 +63,7 @@ public class HealthImpl
 
   @Override
   public String toString() {
-    return "Current health: " + currentHealth + "\nMax health: " + maxHealth;
+    return currentHealth.toString();
   }
 
 }
